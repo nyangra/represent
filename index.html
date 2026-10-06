@@ -103,6 +103,37 @@
         margin-bottom: 24px;
         letter-spacing: -2px;
       }
+      /* 하단 서브 타이틀: 실시간으로 흐르며 반짝이는 텍스트 효과 */
+      .brand-sub {
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        margin-top: 4px;
+
+        /* 그라데이션 배경 세팅 (빛이 지나갈 흰색 영역을 가운데 배치) */
+        background: linear-gradient(90deg, #94a3b8 0%, /* 기본 차분한 슬레이트 블루 */ #94a3b8 35%, #ffffff 50%, /* 반짝이는 하이라이트 화이트 */ #94a3b8 65%, #94a3b8 100%);
+        background-size: 200% auto; /* 배경을 넓혀서 움직일 공간 확보 */
+
+        /* 텍스트 영역에만 그라데이션 적용 */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+
+        /* 무한 반복되는 부드러운 애니메이션 작동 */
+        animation: shine 3s linear infinite;
+
+        /* 텍스트 주변에 은은한 네온 광원 효과 추가 */
+        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.15));
+      }
+
+      /* 빛이 왼쪽에서 오른쪽으로 흐르는 애니메이션 핵심 연산 */
+      @keyframes shine {
+        0% {
+          background-position: 200% center;
+        }
+        100% {
+          background-position: -200% center;
+        }
+      }
       .hero p {
         font-size: 18px;
         color: #94a3b8;
@@ -347,8 +378,15 @@
 
     <!-- 히어로 섹션 -->
     <div class="hero">
-      <h1>해외선물, 아직도 위험하게 내 돈으로 하세요?<br />이제 <span>시뮬레이션 트레이딩</span>으로 안전하게.</h1>
-      <p>서드프랍(Seod Prop)은 독보적인 리스크 관리 솔루션을 제공하는 프랍트레이딩 플랫폼입니다. 시뮬레이션 환경에서 당신의 트레이딩 실력을 증명하고 리스크 없이 안전하게 보상을 획득하세요.</p>
+      <h1 class="brand-title">
+        <span class="brand-badge">PRO-TRADING DATA FIRM</span>
+        <br />
+        <span class="brand-sub">SEOD PROP </span>
+      </h1>
+      <p>
+        서드프랍(Seod Prop)은 프랍트레이딩 플랫폼을 활용해 수익을 창출하는 스마트한 1인 법인 파트너입니다. 시뮬레이션 환경에서 검증된 고품질 매매 데이터를 용역으로 제공하고, 리스크 없이 안전하게
+        보상을 획득하세요.
+      </p>
       <div class="hero-btns">
         <a href="#" class="btn-primary">테스트 도전하기</a>
         <a href="#" class="btn-secondary">자세히 알아보기</a>
@@ -426,13 +464,13 @@
             <!-- 최신 공고가 최상단에 위치하게 관리합니다 -->
             <tr>
               <td>2</td>
-              <td><a href="#" class="notice-title">[공고] 제1기 정기주주총회 소집공고</a></td>
+              <td><a href="#" class="notice-title">[샘플][공고] 제1기 정기주주총회 소집공고</a></td>
               <td>2026-03-15</td>
               <td>경영지원본부</td>
             </tr>
             <tr>
               <td>1</td>
-              <td><a href="#" class="notice-title">[공고] 주식회사 서드프랍 법인 설립 및 전자공고 홈페이지 지정 고시</a></td>
+              <td><a href="#" class="notice-title">[샘플][공고] 주식회사 서드프랍 법인 설립 및 전자공고 홈페이지 지정 고시</a></td>
               <td>2026-01-10</td>
               <td>이사회</td>
             </tr>
@@ -440,5 +478,11 @@
         </table>
       </div>
     </div>
+
+    <!-- 법적 책임 한계 기술 풋터 -->
+    <footer>
+      <p class="footer-company-info">주식회사 서드프랍 | 대표이사: 서동욱 | 경기도 남양주시 화도읍 마석중앙로 37번길 45 별나라프라자 305호 | 사업자등록번호: 000-00-00000</p>
+      <p>Copyright © SEOD PROP Corp. All rights reserved. 본 전자공고 시스템에 게재된 모든 법정 문서는 임의로 수정되거나 유출될 수 없으며 기술적 장치에 의해 보호받고 있습니다.</p>
+    </footer>
   </body>
 </html>
