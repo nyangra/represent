@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>서드프랍 | SEOD PROP - 차세대 프랍트레이딩 플랫폼</title>
+    <title>서드프랍 | 주식회사 서드프랍 (SEOD PROP)</title>
     <style>
       /* 기본 스타일 리셋 및 폰트 설정 */
       * {
@@ -48,6 +48,11 @@
         color: #00ff66;
         letter-spacing: -1px;
       }
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
       .nav-menu {
         display: flex;
         gap: 30px;
@@ -66,10 +71,43 @@
         border-radius: 8px;
         font-weight: 600;
         transition: 0.3s;
+        display: inline-block;
       }
       .btn-dashboard:hover {
         background: #00cc52;
         box-shadow: 0 0 15px rgba(0, 255, 102, 0.4);
+      }
+
+      /* 햄버거 버튼 (기본 숨김) */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 26px;
+        height: 20px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1001;
+      }
+      .hamburger span {
+        width: 100%;
+        height: 2px;
+        background-color: #ffffff;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+
+      /* 햄버거 버튼 활성화 애니메이션 (X 형태) */
+      .hamburger.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+      }
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
       }
 
       /* 공통 섹션 레이아웃 */
@@ -108,24 +146,15 @@
         font-weight: 600;
         letter-spacing: -0.01em;
         margin-top: 4px;
-
-        /* 그라데이션 배경 세팅 (빛이 지나갈 흰색 영역을 가운데 배치) */
-        background: linear-gradient(90deg, #94a3b8 0%, /* 기본 차분한 슬레이트 블루 */ #94a3b8 35%, #ffffff 50%, /* 반짝이는 하이라이트 화이트 */ #94a3b8 65%, #94a3b8 100%);
-        background-size: 200% auto; /* 배경을 넓혀서 움직일 공간 확보 */
-
-        /* 텍스트 영역에만 그라데이션 적용 */
+        background: linear-gradient(90deg, #94a3b8 0%, #94a3b8 35%, #ffffff 50%, #94a3b8 65%, #94a3b8 100%);
+        background-size: 200% auto;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-
-        /* 무한 반복되는 부드러운 애니메이션 작동 */
         animation: shine 3s linear infinite;
-
-        /* 텍스트 주변에 은은한 네온 광원 효과 추가 */
         filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.15));
       }
 
-      /* 빛이 왼쪽에서 오른쪽으로 흐르는 애니메이션 핵심 연산 */
       @keyframes shine {
         0% {
           background-position: 200% center;
@@ -242,7 +271,7 @@
         position: relative;
       }
 
-      /* 법인 전자공고 전용 섹션 (상법 요건 충족용) */
+      /* 법인 전자공고 전용 섹션 */
       .public-notice-section {
         background: #0f172a;
         border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -305,51 +334,6 @@
         font-size: 14px;
         color: #64748b;
       }
-      .footer-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        flex-wrap: wrap;
-        gap: 40px;
-      }
-      .footer-company h5 {
-        font-size: 18px;
-        color: #fff;
-        font-weight: 700;
-        margin-bottom: 15px;
-      }
-      .footer-company p {
-        margin-bottom: 8px;
-        font-size: 13px;
-        line-height: 1.8;
-      }
-      .footer-links {
-        display: flex;
-        gap: 40px;
-      }
-      .link-group h6 {
-        color: #fff;
-        font-size: 15px;
-        margin-bottom: 15px;
-        font-weight: 600;
-      }
-      .link-group ul li {
-        margin-bottom: 10px;
-        font-size: 13px;
-      }
-      .link-group ul li:hover {
-        color: #fff;
-      }
-      .copyright {
-        width: 100%;
-        text-align: center;
-        margin-top: 40px;
-        padding-top: 20px;
-        border-top: 1px solid rgba(255, 255, 255, 0.03);
-        font-size: 12px;
-      }
 
       /* 반응형 디자인 */
       @media (max-width: 1024px) {
@@ -357,8 +341,82 @@
         .steps {
           grid-template-columns: 1fr;
         }
+      }
+
+      /* 모바일 반응형 (768px 이하) */
+      @media (max-width: 768px) {
+        header {
+          padding: 16px 20px;
+        }
+
+        /* 햄버거 버튼 노출 */
+        .hamburger {
+          display: flex;
+        }
+
+        /* 모바일 헤더 메뉴 펼침 레이아웃 */
+        .header-right {
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background: #0b0f19;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          padding: 24px 20px;
+          gap: 20px;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-right.active {
+          display: flex;
+        }
+
+        .nav-menu {
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+          font-size: 16px;
+          width: 100%;
+        }
+
+        .btn-dashboard {
+          width: 100%;
+          text-align: center;
+        }
+
+        /* Hero 섹션 모바일 조절 */
+        .hero {
+          padding: 140px 20px 80px 20px;
+        }
+        .hero h1 {
+          font-size: 34px;
+        }
+        .hero p {
+          font-size: 15px;
+        }
+        .hero-btns {
+          flex-direction: column;
+          gap: 12px;
+        }
+        .btn-primary,
+        .btn-secondary {
+          width: 100%;
+          text-align: center;
+        }
+
+        /* Hero 섹션 Stats 세로 정렬 */
         .stats {
-          gap: 40px;
+          flex-direction: column;
+          align-items: center;
+          gap: 24px;
+          margin-top: 50px;
+          padding-top: 30px;
+        }
+
+        .stat-item h3 {
+          font-size: 32px;
         }
       }
     </style>
@@ -367,13 +425,24 @@
     <!-- 헤더 / 내비게이션 -->
     <header>
       <div class="logo">SEOD PROP</div>
-      <ul class="nav-menu">
-        <li>서비스 소개</li>
-        <li>트레이딩 규칙</li>
-        <li>가이드 센터</li>
-        <li><a href="public-notice.html">전자공고</a></li>
-      </ul>
-      <a href="#" class="btn-dashboard">대시보드 바로가기</a>
+
+      <!-- 햄버거 버튼 -->
+      <button class="hamburger" id="hamburger-btn" aria-label="메뉴 열기">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- 모바일 드롭다운 대응 우측 그룹 -->
+      <div class="header-right" id="header-menu">
+        <ul class="nav-menu">
+          <li>서비스 소개</li>
+          <li>트레이딩 규칙</li>
+          <li>가이드 센터</li>
+          <li><a href="public-notice.html">전자공고</a></li>
+        </ul>
+        <a href="#" class="btn-dashboard">대시보드 바로가기</a>
+      </div>
     </header>
 
     <!-- 히어로 섹션 -->
@@ -484,5 +553,16 @@
       <p class="footer-company-info">주식회사 서드프랍 | 대표이사: 서동욱 | 경기도 남양주시 화도읍 마석중앙로 37번길 45 별나라프라자 305호 | 사업자등록번호: 000-00-00000</p>
       <p>Copyright © SEOD PROP Corp. All rights reserved. 본 전자공고 시스템에 게재된 모든 법정 문서는 임의로 수정되거나 유출될 수 없으며 기술적 장치에 의해 보호받고 있습니다.</p>
     </footer>
+
+    <!-- 모바일 햄버거 토글 JS 스크립트 -->
+    <script>
+      const hamburgerBtn = document.getElementById("hamburger-btn");
+      const headerMenu = document.getElementById("header-menu");
+
+      hamburgerBtn.addEventListener("click", () => {
+        hamburgerBtn.classList.toggle("active");
+        headerMenu.classList.toggle("active");
+      });
+    </script>
   </body>
 </html>
